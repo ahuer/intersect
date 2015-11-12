@@ -15,14 +15,14 @@ public class Intersection {
 		}
 		
 		Set<Integer> returnSet = new HashSet<Integer>();
-		Map<Integer, Integer> secondList = new HashMap<Integer, Integer>();
-		fillMap(secondList, list2);
+		Map<Integer, Integer> list2Map = new HashMap<Integer, Integer>();
+		fillMap(list2Map, list2);
 		
 		for(Integer element : list1) {
 			if(returnSet.contains(element)){
 				continue;
 			}
-			if(secondList.containsKey(element)){
+			if(list2Map.containsKey(element)){
 				returnSet.add(element);
 			}			
 		}
@@ -47,14 +47,11 @@ public class Intersection {
 		
 		for(Integer num : list1Map.keySet()) {
 			if(list2Map.containsKey(num)){
-				returnMap.put(num, list1Map.get(num) + list2Map.get(num));
+				returnMap.put(num, list1Map.get(num) + list2Map.get(num) - 1);
 			}			
 		}
 		
-		List<Integer> returnList = new ArrayList<Integer>(); 
-		//returnList.addAll(returnMap);
-		
-		return returnList; 
+		return mapToList(returnMap); 
 	}
 	
 	private static void fillMap(Map<Integer, Integer> map, List<Integer> list){
@@ -65,6 +62,22 @@ public class Intersection {
 				map.put(num, 1);
 			}
 		}
+	}
+	
+	private static List<Integer> mapToList(Map<Integer, Integer> map){
+		List<Integer> returnList = new ArrayList<Integer>(); 
+		
+		if(map.isEmpty()){
+			return returnList;
+		}
+		
+		for(Integer num : map.keySet()){
+			for(int i = 0; i < map.get(num); i++){
+				returnList.add(num);
+			}			
+		}
+		
+		return returnList;
 	}
 	
 }
