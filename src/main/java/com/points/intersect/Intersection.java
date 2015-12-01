@@ -18,7 +18,7 @@ public class Intersection {
 		Map<Integer, Integer> list2Map = new HashMap<Integer, Integer>();
 		fillMap(list2Map, list2);
 		
-		for(Integer element : list1) {
+		for(int element : list1) {
 			if(returnSet.contains(element)){
 				continue;
 			}
@@ -45,7 +45,7 @@ public class Intersection {
 		Map<Integer, Integer> list2Map = new HashMap<Integer, Integer>();
 		fillMap(list2Map, list2);
 		
-		for(Integer num : list1Map.keySet()) {
+		for(int num : list1Map.keySet()) {
 			if(list2Map.containsKey(num)){
 				returnMap.put(num, list1Map.get(num) + list2Map.get(num) - 1);
 			}			
@@ -55,7 +55,7 @@ public class Intersection {
 	}
 	
 	private static void fillMap(Map<Integer, Integer> map, List<Integer> list){
-		for(Integer num : list){
+		for(int num : list){
 			if(map.containsKey(num)){
 				map.put(num, map.get(num) + 1);
 			} else {
@@ -71,7 +71,7 @@ public class Intersection {
 			return returnList;
 		}
 		
-		for(Integer num : map.keySet()){
+		for(int num : map.keySet()){
 			for(int i = 0; i < map.get(num); i++){
 				returnList.add(num);
 			}			
